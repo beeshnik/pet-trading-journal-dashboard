@@ -1,0 +1,1 @@
+export const defaultApi = "http://localhost:3006/api";
