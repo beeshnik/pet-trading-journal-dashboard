@@ -1,5 +1,14 @@
 .container {
     cursor: pointer;
     padding: 8px 12px 8px 12px;
-    /* border: 1px solid var(--borders); */
+    color: var(--text-secondary)
+}
+
+.container[data-tab-chosen="chosen"] {
+    cursor: pointer;
+    padding: 8px 12px 8px 12px;
+    border: 1px solid var(--borders-light);
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    color: var(--text-primary)
 }

@@ -9,7 +9,7 @@
   --bg-light: #FFFFFF;
 
   --borders: #D1D5DB;
-  
+  --borders-light: #E5E7EB;
 
   --text-primary: #111827;
   --text-secondary: #6B7583;
@@ -37,6 +37,7 @@ html[data-theme="dark"] {
   --bg-light: #1F2937;
 
   --borders: #4B5563;
+  --borders-light: #374151;
   
 
   --text-primary: #F9FAFB;
@@ -70,7 +71,7 @@ h1, h2, h3, h4, h5, p {
   --bg-light: #1F2937;
 
   --borders: #4B5563;
-  
+  --borders-light: #374151;
 
   --text-primary: #F9FAFB;
   --text-secondary: #9CA3AF;
