@@ -12,7 +12,7 @@ export function NavigationTab({ tab, chosen, setChosen }: Props) {
     const navigate = useNavigate();
 
     const onClickHandler = () => {
-        setChosen(tab.title);
+        setChosen(tab.path);
         navigate(tab.path);
     };
 
@@ -20,7 +20,7 @@ export function NavigationTab({ tab, chosen, setChosen }: Props) {
         <nav
             onClick={onClickHandler}
             className={styles.container}
-            data-tab-chosen={chosen === tab.title ? "chosen" : "notChosen"}
+            data-tab-chosen={chosen === tab.path ? "chosen" : "notChosen"}
         >
             {tab.title}
         </nav>
