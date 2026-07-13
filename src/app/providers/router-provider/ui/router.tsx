@@ -2,13 +2,11 @@ import { createBrowserRouter } from "react-router";
 import { ROUTES } from "@shared/config";
 import { DashboardPage } from "@pages/DashboardPage";
 import { NavigationPanel } from "@widgets/NavigationPanel";
-
+import { CreateTradePage } from "@pages/CreateTradePage";
 
 export const router = createBrowserRouter([
     {
-        element: (
-            <NavigationPanel />
-        ),
+        element: <NavigationPanel />,
         children: [
             {
                 path: "/",
@@ -16,7 +14,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: ROUTES.CREATE_TRADE,
-                element: <h2>{"Create trade page"}</h2>,
+                element: <CreateTradePage />,
             },
         ],
     },

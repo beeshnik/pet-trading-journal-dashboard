@@ -4,7 +4,11 @@ const config: ConfigFile = {
     schemaFile: "http://localhost:3006/api/openapi.json",
     apiFile: "./src/shared/config/baseApi.ts",
     apiImport: "baseApi",
-    outputFile: "./src/shared/api/generatedApi.ts",
+    outputFiles: {
+        "./src/shared/api/generatedApi.ts": {
+            tag: true
+        }
+    },
     // exportName: "petApi",
     hooks: true,
 };
