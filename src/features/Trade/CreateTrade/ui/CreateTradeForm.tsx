@@ -7,7 +7,6 @@ import {
 import {
     useGetAlgorithmsQuery,
     usePostTradesMutation,
-    type CreateTradeDto,
 } from "@shared/api/generatedApi";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styles from "./CreateTradeForm.module.css";
@@ -23,7 +22,7 @@ export function CreateTradeForm() {
     const [postTrade, { error: postError, isLoading: isPostLoading }] =
         usePostTradesMutation();
 
-    const { control, handleSubmit } = useForm<
+    const { control, handleSubmit, setError, setFocus } = useForm<
         createTradeInputDTO,
         any,
         createTradeOutputDTO
@@ -33,9 +32,19 @@ export function CreateTradeForm() {
     });
 
     const formSubmit = (form: createTradeOutputDTO) => {
-        postTrade({
-            createTradeDto: form,
-        });
+        if (new Date(form.openDate) > new Date(form.closeDate)) {
+            setError("closeDate", {
+                message: "Дата открытия должна быть меньше даты закрытия"
+            })
+            setError("openDate", {
+                message: "Дата открытия должна быть меньше даты закрытия",
+            });
+            setFocus("closeDate")
+        } else {
+            postTrade({
+                createTradeDto: form,
+            });
+        }
     };
 
     return (
