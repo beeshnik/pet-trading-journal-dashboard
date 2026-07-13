@@ -1,19 +1,18 @@
-import { createBrowserRouter, Outlet } from "react-router";
+import { createBrowserRouter } from "react-router";
 import { ROUTES } from "@shared/config";
+import { DashboardPage } from "@pages/DashboardPage";
+import { NavigationPanel } from "@widgets/NavigationPanel";
 
 
 export const router = createBrowserRouter([
     {
         element: (
-            <div>
-                <h1>{"United header"}</h1>
-                <Outlet />
-            </div>
+            <NavigationPanel />
         ),
         children: [
             {
                 path: "/",
-                element: <h1>{"Dashboard page"}</h1>,
+                element: <DashboardPage />,
             },
             {
                 path: ROUTES.CREATE_TRADE,

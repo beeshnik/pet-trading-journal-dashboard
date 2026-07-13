@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    align-items: center;
+}
+
+/* .navigation {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+} */
+
+.navigation {
+    display: flex;
+}
