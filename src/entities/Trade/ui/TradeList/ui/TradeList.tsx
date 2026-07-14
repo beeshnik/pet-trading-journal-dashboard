@@ -1,7 +1,6 @@
 import { useGetTradesQuery } from "@shared/api/generatedApi";
 import { TradeCard } from "../../TradeCard/";
 import styles from "./TradeList.module.css";
-import { Fragment } from "react/jsx-runtime";
 
 export function TradeList() {
     const { data: tradeList, error, isLoading, isError } = useGetTradesQuery();

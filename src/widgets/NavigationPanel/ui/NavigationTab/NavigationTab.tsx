@@ -1,28 +1,20 @@
-import { useNavigate } from "react-router";
+import { NavLink } from "react-router";
 import type { TabType } from "../../model/tabs";
 import styles from "./NavigationTab.module.css";
 
 type Props = {
     tab: TabType;
-    chosen: string;
-    setChosen: (tabName: string) => void;
 };
 
-export function NavigationTab({ tab, chosen, setChosen }: Props) {
-    const navigate = useNavigate();
-
-    const onClickHandler = () => {
-        setChosen(tab.path);
-        navigate(tab.path);
-    };
-
+export function NavigationTab({ tab }: Props) {
     return (
-        <nav
-            onClick={onClickHandler}
-            className={styles.container}
-            data-tab-chosen={chosen === tab.path ? "chosen" : "notChosen"}
+        <NavLink
+            to={tab.path}
+            className={({ isActive }) =>
+                isActive ? styles.containerChosen : styles.container
+            }
         >
             {tab.title}
-        </nav>
+        </NavLink>
     );
 }

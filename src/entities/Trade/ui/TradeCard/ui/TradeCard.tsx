@@ -10,7 +10,7 @@ export function TradeCard({ trade }: Props) {
     const closeDate = new Date(trade.closeDate);
 
     return (
-        <div className={styles.TradeCardContainer}>
+        <article className={styles.TradeCardContainer}>
             <h3 className={styles.TradeCardHeader}>{trade.instrument}</h3>
             <section className={styles.TradeCardCommonSection}>
                 <label className={styles.TradeCardLabel}>{"Открытие"}</label>
@@ -41,6 +41,6 @@ export function TradeCard({ trade }: Props) {
                     {trade.algorithm.type}
                 </p>
             </section>
-        </div>
+        </article>
     );
 }

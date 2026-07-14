@@ -10,6 +10,7 @@ import {
 } from "@shared/api/generatedApi";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styles from "./CreateTradeForm.module.css";
+import { getErrorMessage } from "@shared/lib/GetErrorMessage";
 
 export function CreateTradeForm() {
     const {
@@ -22,9 +23,8 @@ export function CreateTradeForm() {
     const [postTrade, { error: postError, isLoading: isPostLoading }] =
         usePostTradesMutation();
 
-    const { control, handleSubmit, setError, setFocus } = useForm<
+    const { control, handleSubmit } = useForm<
         createTradeInputDTO,
-        any,
         createTradeOutputDTO
     >({
         defaultValues: {},
@@ -32,19 +32,9 @@ export function CreateTradeForm() {
     });
 
     const formSubmit = (form: createTradeOutputDTO) => {
-        if (new Date(form.openDate) > new Date(form.closeDate)) {
-            setError("closeDate", {
-                message: "Дата открытия должна быть меньше даты закрытия"
-            })
-            setError("openDate", {
-                message: "Дата открытия должна быть меньше даты закрытия",
-            });
-            setFocus("closeDate")
-        } else {
-            postTrade({
-                createTradeDto: form,
-            });
-        }
+        postTrade({
+            createTradeDto: form,
+        });
     };
 
     return (
@@ -57,7 +47,7 @@ export function CreateTradeForm() {
                                 className={styles.label}
                                 htmlFor="instrument-input"
                             >
-                                Введите название инструмента
+                                Инструмент
                             </label>
                             <input {...field} id="instrument-input" />
                             {fieldState.error && fieldState.error.message && (
@@ -70,7 +60,6 @@ export function CreateTradeForm() {
                     name="instrument"
                     control={control}
                 />
-
                 <Controller
                     render={({ field, fieldState }) => (
                         <section className={styles.section}>
@@ -78,7 +67,7 @@ export function CreateTradeForm() {
                                 className={styles.label}
                                 htmlFor="open-date-input"
                             >
-                                Выберите дату открытия сделки
+                                Дата открытия сделки
                             </label>
                             <input
                                 {...field}
@@ -95,7 +84,6 @@ export function CreateTradeForm() {
                     name="openDate"
                     control={control}
                 />
-
                 <Controller
                     render={({ field, fieldState }) => (
                         <section className={styles.section}>
@@ -103,7 +91,7 @@ export function CreateTradeForm() {
                                 className={styles.label}
                                 htmlFor="close-date-input"
                             >
-                                Выберите дату закрытия сделки
+                                Дата открытия сделки
                             </label>
                             <input
                                 {...field}
@@ -120,12 +108,11 @@ export function CreateTradeForm() {
                     name="closeDate"
                     control={control}
                 />
-
                 <Controller
                     render={({ field, fieldState }) => (
                         <section className={styles.section}>
                             <label className={styles.label} htmlFor="pnl-input">
-                                Введите p&l
+                                P&L
                             </label>
                             <input {...field} type="number" id="pnl-input" />
                             {fieldState.error && fieldState.error.message && (
@@ -138,7 +125,6 @@ export function CreateTradeForm() {
                     name="pnl"
                     control={control}
                 />
-
                 <Controller
                     render={({ field, fieldState }) => (
                         <section className={styles.section}>
@@ -146,7 +132,7 @@ export function CreateTradeForm() {
                                 className={styles.label}
                                 htmlFor="algo-select"
                             >
-                                Выберите алгоритм
+                                Алгоритм
                             </label>
                             <select
                                 {...field}
@@ -168,8 +154,12 @@ export function CreateTradeForm() {
                             </select>
                             {fieldState.error && fieldState.error.message && (
                                 <label className={styles.error}>
-                                    {fieldState.error.message ||
-                                        (algoError as string)}
+                                    {fieldState.error.message}
+                                </label>
+                            )}
+                            {algoError && (
+                                <label className={styles.error}>
+                                    {getErrorMessage(algoError)}
                                 </label>
                             )}
                         </section>
@@ -177,13 +167,12 @@ export function CreateTradeForm() {
                     name="algorithmId"
                     control={control}
                 />
-
                 <button type="submit" disabled={isPostLoading}>
-                    {isAlgoLoading ? "Добавление сделки..." : "Добавить сделку"}
+                    {isPostLoading ? "Добавление сделки..." : "Добавить сделку"}
                 </button>
                 {postError && (
                     <label className={styles.error}>
-                        {postError as string}
+                        {getErrorMessage(postError)}
                     </label>
                 )}
             </form>
