@@ -1,29 +1,23 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-
-type TradeFilter = {
-    algorithmId: null | string[];
-    instrument: null | string[];
-    dateFrom: null | Date | string;
-    dateTo: null | Date | string;
-};
+import type { TradeFilter } from "./types";
 
 const initialState: TradeFilter = {
-    algorithmId: null,
-    instrument: null,
-    dateFrom: null,
-    dateTo: null,
+    algorithmId: undefined,
+    instrument: undefined,
+    dateFrom: undefined,
+    dateTo: undefined,
 };
 
 export const filterSlice = createSlice({
     name: "tradeFilter",
     initialState,
     reducers: {
-        updateFilter: (state, action: PayloadAction<TradeFilter>) => {
-            state = action.payload;
+        updateFilter: (_, action: PayloadAction<TradeFilter>) => {
+            return action.payload;
         },
-        clearFilter: (state) => {
-            state = initialState;
+        clearFilter: () => {
+            return initialState;
         },
     },
 });
@@ -39,3 +33,4 @@ export const useClearTradeFilter = () => {
     const dispatch = useDispatch();
     return () => dispatch(clearFilter());
 };
+

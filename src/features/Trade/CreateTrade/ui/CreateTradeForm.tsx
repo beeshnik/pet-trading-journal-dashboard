@@ -91,7 +91,7 @@ export function CreateTradeForm() {
                                 className={styles.label}
                                 htmlFor="close-date-input"
                             >
-                                Дата открытия сделки
+                                Дата закрытия сделки
                             </label>
                             <input
                                 {...field}

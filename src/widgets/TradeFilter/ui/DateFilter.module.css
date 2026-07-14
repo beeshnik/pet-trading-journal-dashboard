@@ -1,0 +1,4 @@
+.dateFilter {
+    display: flex;
+    flex-direction: column;
+}
