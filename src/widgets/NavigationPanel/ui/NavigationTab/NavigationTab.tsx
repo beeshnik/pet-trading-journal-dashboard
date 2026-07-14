@@ -14,7 +14,7 @@ export function NavigationTab({ tab }: Props) {
                 isActive ? styles.containerChosen : styles.container
             }
         >
-            {tab.title}
+            {tab.name}
         </NavLink>
     );
 }

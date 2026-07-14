@@ -14,3 +14,5 @@ const config: ConfigFile = {
 };
 
 export default config;
+
+// npx @rtk-query/codegen-openapi openapi-config.ts
