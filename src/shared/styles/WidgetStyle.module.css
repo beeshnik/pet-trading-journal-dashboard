@@ -1,0 +1,31 @@
+.article {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: var(--borders) 1px solid;
+    border-radius: var(--border-radius);
+    padding: 8px;
+}
+
+.header {
+    font-size: 32px;
+    color: var(--text-primary);
+    font-weight: bold;
+}
+
+.label {
+    font-size: 24px;
+    color: var(--text-secondary);
+}
+
+.success {
+    color: var(--success);
+}
+
+.warning {
+    color: var(--warning);
+}
+
+.error {
+    color: var(--error);
+}

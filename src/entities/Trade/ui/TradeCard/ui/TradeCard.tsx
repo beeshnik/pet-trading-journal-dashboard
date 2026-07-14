@@ -1,5 +1,7 @@
 import type { Trade } from "@shared/api/generatedApi";
 import styles from "../style/TradeCard.module.css";
+import widgetStyles from "@shared/styles/WidgetStyle.module.css";
+import { getValueColor } from "@shared/lib/GetValueColor";
 
 type Props = {
     trade: Trade;
@@ -8,6 +10,8 @@ type Props = {
 export function TradeCard({ trade }: Props) {
     const openDate = new Date(trade.openDate);
     const closeDate = new Date(trade.closeDate);
+
+    const labelColor = getValueColor(trade.pnl || 0);
 
     return (
         <article className={styles.TradeCardContainer}>
@@ -26,7 +30,11 @@ export function TradeCard({ trade }: Props) {
             </section>
             <section className={styles.TradeCardCommonSection}>
                 <label className={styles.TradeCardLabel}>{"P&L"}</label>
-                <p className={styles.TradeCardPnl}>{trade.pnl}</p>
+                <p
+                    className={`${styles.TradeCardLabel} ${widgetStyles[labelColor]}`}
+                >
+                    {trade.pnl}
+                </p>
             </section>
             <section className={styles.TradeCardAlgorithmSection}>
                 <div>
