@@ -1,0 +1,50 @@
+.TradeCardContainer {
+    display: flex;
+    padding: 12px;
+    flex-direction: column;
+    /* max-width: 400px;
+    min-width: 200px; */
+    gap: 8px;
+    border: var(--borders) solid 1px;
+    border-radius: var(--border-radius);
+}
+
+.TradeCardHeader {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.TradeCardCommonText {
+    font-size: 16px;
+}
+
+.TradeCardLabel {
+    font-size: 12px;
+    color: var(--text-tertiary);
+}
+
+.TradeCardDate {
+    font-size: 16px;
+}
+
+.TradeCardPnl {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.TradeCardCommonSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.TradeCardAlgorithmSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.TradeCardAlgorithmTypeText {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
